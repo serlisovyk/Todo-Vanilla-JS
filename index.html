@@ -2,11 +2,52 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Todo List</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>To Do List</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="wrapper">Content</div>
+    <div class="wrapper" data-js-wrapper>
+      <h1 class="title">To Do List</h1>
+      <form class="todo__form" data-js-new-task-form>
+        <div class="todo__field field">
+          <label class="label" for="new-task"> New task </label>
+          <input
+            class="field__input"
+            id="new-task"
+            placeholder=" "
+            autocomplete="off"
+            data-js-new-task-input
+          />
+        </div>
+        <button class="button" type="submit">Add</button>
+      </form>
+      <form class="todo__form" data-js-search-task-form>
+        <div class="todo__field field">
+          <label class="label" for="search-task"> Search task </label>
+          <input
+            class="field__input"
+            id="search-task"
+            placeholder=" "
+            autocomplete="off"
+            type="search"
+            data-js-search-task-input
+          />
+        </div>
+      </form>
+      <div class="todo__info">
+        <div>Total tasks: <span data-js-tasks-total>0</span></div>
+        <button
+          class="todo__delete-all-button"
+          type="button"
+          data-js-delete-all-button
+        >
+          Delete all
+        </button>
+      </div>
+      <ul class="todo__list" data-js-todos-list></ul>
+      <div class="todo__empty-message" data-js-todos-empty-message></div>
+    </div>
   </body>
 </html>
