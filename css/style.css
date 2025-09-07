@@ -10,8 +10,7 @@
 
   --color-gray-1: #f5f5f5;
   --color-gray-2: #d9d9d9;
-  --color-gray-3: #b3b3b3;
-  --color-gray-4: #757575;
+  --color-gray-3: #757575;
 
   --border: 1px solid var(--color-gray-2);
   --border-radius: 8px;
@@ -79,6 +78,7 @@ button {
   left: 17px;
   color: var(--color-gray-3);
   translate: 0 -50%;
+  cursor: text;
 }
 
 .field__input {
@@ -156,7 +156,7 @@ button {
 
   &:hover,
   &:focus {
-    color: var(--color-gray-4);
+    color: var(--color-gray-3);
   }
 
   &:not(.is-visible) {
@@ -179,7 +179,7 @@ button {
 
 .todo__empty-message {
   text-align: center;
-  color: var(--color-gray-4);
+  color: var(--color-gray-3);
 }
 
 .todo-item {
@@ -187,6 +187,7 @@ button {
   align-items: center;
   gap: 12px;
   padding-left: 10px;
+  min-width: 0;
   border: var(--border);
   border-radius: var(--border-radius);
   transition-duration: var(--transition-duration);
@@ -217,7 +218,7 @@ button {
   width: 20px;
   height: 20px;
   margin: 0;
-  border: 1px solid var(--color-gray-4);
+  border: 1px solid var(--color-gray-3);
   border-radius: 4px;
   cursor: pointer;
 
@@ -226,7 +227,7 @@ button {
     border-color: var(--color-dark-2);
 
     & + .todo-item__label {
-      color: var(--color-gray-4);
+      color: var(--color-gray-3);
       text-decoration: line-through;
     }
   }
@@ -253,8 +254,11 @@ button {
 }
 
 .todo-item__label {
-  width: 100%;
-  cursor: pointer;
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .todo-item__delete-button {
@@ -266,7 +270,7 @@ button {
   height: 44px;
   margin-left: auto;
   padding: 0;
-  color: var(--color-gray-4);
+  color: var(--color-gray-3);
   background-color: transparent;
   border: none;
   border-radius: inherit;
@@ -274,6 +278,11 @@ button {
   &:hover {
     color: var(--color-white);
     background-color: var(--color-dark-1);
+
+    & svg [stroke] {
+      stroke: var(--color-white);
+      transition-duration: var(--transition-duration);
+    }
   }
 
   &:active {
@@ -282,5 +291,29 @@ button {
 
   * {
     pointer-events: none;
+  }
+}
+
+@media (width <= 767px) {
+  body {
+    padding: 50px 15px;
+  }
+
+  .wrapper {
+    padding: 16px;
+  }
+}
+
+@media (width <= 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .todo__form {
+    flex-direction: column;
+
+    & .button {
+      justify-content: center;
+    }
   }
 }
